@@ -20,5 +20,5 @@ artifacts:
     - server.js
     - appspec.yml
     - scripts/*
-    - src/*
+    - src/**/*
     - node_modules/**/*
