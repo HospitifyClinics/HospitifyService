@@ -25,6 +25,7 @@ try {
 module.exports = {
     postClinic: (req, res) => {
         // Create a new instance of the Clinic model
+        console.log('***********************  postClinic ***********************');
         let clinic = new Clinic();
 
         // Set the clinic properties that came from the POST data
@@ -56,6 +57,7 @@ module.exports = {
     },
 
     getClinics: (req, res) => {
+        console.log('***********************  getClinics ***********************');
         Clinic.find((err, clinics) => {
             if (err) {
                 res.send(err);
@@ -65,6 +67,7 @@ module.exports = {
     },
 
     getClinic: (req, res) => {
+        console.log('***********************  getClinic ***********************');
         Clinic.findOne({'clinicId': req.params.clinic_id}, (err, clinic) => {
             if (err) {
                 res.send(err);
@@ -74,7 +77,7 @@ module.exports = {
     },
 
     updateClinic: (req, res) =>  {
-
+        console.log('***********************  updateClinic ***********************');
         Clinic.findOne({'clinicId': req.params.clinic_id}, (err, clinic) => {
           if (err)
             res.send(err);
@@ -93,6 +96,7 @@ module.exports = {
     },
 
     deleteClinic: (req, res) => {
+        console.log('***********************  deleteClinic ***********************');
         Clinic.findOneAndRemove({'clinicId': req.params.clinic_id}, (err) => {
           if (err)
             res.send(err);
