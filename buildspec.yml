@@ -18,6 +18,8 @@ artifacts:
     - README.md
     - package.json
     - server.js
+    - swagger.js
     - appspec.yml
     - scripts/*
+    - src/**/*
     - node_modules/**/*
