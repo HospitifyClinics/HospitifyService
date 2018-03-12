@@ -1,0 +1,133 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Hospitify APIs",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "127.0.0.1",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/clinics": {
+      "get": {
+        "summary": "List all Clinics",
+        "operationId": "getClinics",
+        "tags": [
+          "Clinics"
+        ],
+        "parameters": [
+          {}
+        ],
+        "responses": {
+          "200": {
+            "description": "An paged array of clinics",
+            "headers": {
+              "Authorization": {
+                "type": "string",
+                "description": "Authorization token to access clinics"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/clinics"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a clinic",
+        "operationId": "createClinic",
+        "tags": [
+          "Clinics"
+        ],
+        "responses": {
+          "201": {
+            "description": "Null response"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Clinic": {
+      "required": [
+        "name",
+        "address",
+        "address2",
+        "clinicId",
+        "city",
+        "country",
+        "phoneNumber"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "clinicId": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "phoneNumber": {
+            "type": "integer",
+            "format": "int64"
+        }
+      }
+    },
+    "Clinics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Clinic"
+      }
+    },
+    "Error": {
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

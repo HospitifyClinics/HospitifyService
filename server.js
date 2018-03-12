@@ -33,12 +33,18 @@ app.use(passport.initialize());
 // Use environment defined port or 3000
 const port = process.env.PORT || 3000;
 
+// Adding Swagger APIs
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // Create our Express router
 const router = express.Router();
 
 // Create a new route with the prefix /clinics
 router.route('/clinics')
-    .post(authController.isAuthenticated, clinicController.postClinic)
+    .post(authController.isAuthenticated, clinicController.createClinic)
     .get(authController.isAuthenticated, clinicController.getClinics);
 
 
@@ -54,7 +60,7 @@ router.route('/clinicAccounts')
     .get(authController.isAuthenticated, clinicAccountsController.getClinicAccounts);
 
 // Register all our routes with /api
-app.use('/api', router);
+app.use('/api/v1', router);
 
 // Start the server
 app.listen(port);

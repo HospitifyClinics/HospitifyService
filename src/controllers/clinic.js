@@ -23,9 +23,9 @@ try {
 }
 
 module.exports = {
-    postClinic: (req, res) => {
+    createClinic: (req, res) => {
         // Create a new instance of the Clinic model
-        console.log('***********************  postClinic ***********************');
+        console.log('***********************  createClinic ***********************');
         let clinic = new Clinic();
 
         // Set the clinic properties that came from the POST data
