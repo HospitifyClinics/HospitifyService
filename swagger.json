@@ -39,7 +39,7 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/clinics"
+              "$ref": "#/definitions/Clinics"
             }
           },
           "default": {
