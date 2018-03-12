@@ -5,8 +5,6 @@ files:
     destination: /home/ec2-user/express-service
   - source: /package.json
     destination: /home/ec2-user/express-service
-  - source: /src/**/*
-    destination: /home/ec2-user/express-service/src/**/*
   - source: /node_modules
     destination: /home/ec2-user/express-service/node_modules
 hooks:
